@@ -173,25 +173,26 @@ IopaHandlebars.prototype.render = function (filePath, context, options) {
     }.bind(this));
 };
 
-IopaHandlebars.prototype.renderView = function (viewPath, options, callback) {
+IopaHandlebars.prototype.renderView = function (view, options, callback) {
     options || (options = {});
     
-    var view;
+    var viewname, viewPath;
     var viewRoot = ( options.settings && options.settings.views) || this.views;
-    if (path.resolve( viewPath ) == path.normalize( viewPath ))
+    var basePath = path.resolve(viewRoot);
+    if (path.resolve( view ) == path.normalize( view ))
        {
            // absolute path
-            view = this._getTemplateName(path.relative(viewRoot, viewPath));       
+            viewPath = view;
+            view = path.relative(basePath, viewPath)
        } else
        {
-           view = viewPath;
-           viewPath = path.join(process.cwd(), viewRoot, viewPath );
+           // relative path
+           viewPath = path.join(basePath, view );
        }
-
+       
+    viewname = this._getTemplateName(view);
     var context = options;
       
-     var view = this._getTemplateName(path.relative((options.settings && options.settings.views) || this.views, viewPath));
-
     var helpers = utils.assign({}, this.helpers, options.helpers);
 
     var partials = Promise.all([
@@ -203,7 +204,7 @@ IopaHandlebars.prototype.renderView = function (viewPath, options, callback) {
 
     options = {
         cache : options.cache,
-        view  : view,
+        view  : viewname,
         layout: 'layout' in options ? options.layout : this.defaultLayout,
         data    : options.data,
         helpers : helpers,
