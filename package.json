@@ -1,0 +1,72 @@
+{
+  "name": "iopa-template-handlebars",
+  "description": "Handlebars Template Engine for the IOPA Stack for Node.js",
+  "author": "IOPA",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "version": "0.9.0",
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "maintainers": [
+    {
+      "name": "iopa",
+      "email": "build@iopa.io"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "iopa",
+      "email": "build@iopa.io"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/iopa-io/iopa-template-handlebars"
+  },
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
+  "scripts": {
+    "test": "mocha --reporter spec test",
+    "quick": "git add . -A && git commit --allow-empty -m 'dev test' && npm version patch && npm publish",
+    "typings": "tsd reinstall --overwrite --clean --config tools/tsd.json && tsd link"
+  },
+  "dependencies": {
+    "iopa": "^1.3.59"
+  },
+  "devDependencies": {
+    "bluebird": "^3.3.4",
+    "iopa-connect": "^1.3.1",
+    "iopa-router": "^0.9.1",
+    "iopa-templates": "^0.9.1",
+    "iopa-test": "^1.3.18",
+    "mocha": "^2.3.2",
+    "mocha-junit-reporter": "^1.6.1",
+    "should": "^7.1.0"
+  },
+  "keywords": [
+    "iopa",
+    "owin-js",
+    "middleware",
+    "router",
+    "templates",
+    "expressjs",
+    "promise",
+    "async",
+    "framework",
+    "owin",
+    "razor",
+    "moustache",
+    "handlebars",
+    "dust",
+    "ASPX",
+    ".NET",
+    "razorjs"
+  ],
+  "readmeFilename": "README.md",
+  "homepage": "http://iopa.io"
+}
