@@ -176,6 +176,8 @@ IopaHandlebars.prototype.render = function (filePath, context, options) {
 IopaHandlebars.prototype.renderView = function (view, options, callback) {
     options || (options = {});
     
+    options.partials = options.partials || null;
+    
     var viewname, viewPath;
     var viewRoot = ( options.settings && options.settings.views) || this.views;
     var basePath = path.resolve(viewRoot);
